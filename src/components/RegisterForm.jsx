@@ -28,8 +28,13 @@ const RegisterForm = ({ route }) => {
       console.log(res);
       navigate("/login");
     } catch (error) {
-      setError(error.response.data?.username)
-      setError(error.response.data?.non_field_errors)
+      if(error.response.data?.username){
+        setError(error.response.data?.username)
+      }
+      else{
+        setError(error.response.data?.non_field_errors)
+      }
+      
       console.log(error);
     }
   };
