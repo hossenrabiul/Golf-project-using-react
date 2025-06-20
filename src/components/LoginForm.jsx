@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const LoginForm = ({ route}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
     const handlesubmit = async (e)=>{
@@ -17,9 +17,11 @@ const LoginForm = ({ route}) => {
             console.log(res.data)
             localStorage.setItem(ACCESS_TOKEN, res.data.access)
             localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
+            setError('')
             navigate('/')
         }catch(error){
-            console.log(error)
+           setError(error.response.data.detail)
+           console.log(error)
         }
 
     }
@@ -50,7 +52,11 @@ const LoginForm = ({ route}) => {
               required
             />
           </div>
-
+          <div>
+            {
+              error && <p className="text-red-600 font-bold">! Please provite your creadentials currectly</p>
+            }
+          </div>
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"

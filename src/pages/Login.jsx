@@ -4,7 +4,7 @@ import LoginForm from '../components/LoginForm';
 
 const Login = () => {
     return (
-       <LoginForm route={'api/token/'}></LoginForm>
+       <LoginForm route={'https://sporting-server-phi.vercel.app/api/token/'}></LoginForm>
     );
 };
 

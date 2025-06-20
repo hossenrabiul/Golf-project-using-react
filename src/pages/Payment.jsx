@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Payment = () => {
-  const {products, inTotal} = useContext(AuthContext)
+  const {inTotal} = useContext(AuthContext)
 
   const payment = () => {
-    fetch("http://127.0.0.1:8000/payment/pay/", {
+    fetch("https://sporting-server-phi.vercel.app/payment/pay/", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ amount: inTotal, currency: "BDT" }),

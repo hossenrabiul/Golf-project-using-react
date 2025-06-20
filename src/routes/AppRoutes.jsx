@@ -32,7 +32,7 @@ const router = createBrowserRouter([
                 element: <ShopNow></ShopNow>
             },{
                 path: 'details/:id',
-                loader: ({params})=> fetch(`http://127.0.0.1:8000/posts/postdetail/${params.id}/`),
+                loader: ({params})=> fetch(`https://sporting-server-phi.vercel.app/posts/postdetail/${params.id}/`),
                 element: <Details></Details>
             },{
                 path: 'shoppingcart',

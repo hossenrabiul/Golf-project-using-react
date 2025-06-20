@@ -10,6 +10,7 @@ const RegisterForm = ({ route }) => {
   const [password, setPassword] = useState("");
   const [confirm_password, setComfirm_password] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   // console.log(username, " ", first_name, " ", last_name, " ", email, " ", password, " ", comfirm_password)
   const handlesubmit = async (e) => {
     e.preventDefault();
@@ -23,9 +24,12 @@ const RegisterForm = ({ route }) => {
         password,
         confirm_password,
       });
+      setError('')
       console.log(res);
       navigate("/login");
     } catch (error) {
+      setError(error.response.data?.username)
+      setError(error.response.data?.non_field_errors)
       console.log(error);
     }
   };
@@ -103,7 +107,9 @@ const RegisterForm = ({ route }) => {
               required
             />
           </div>
-
+          <div>
+            {error && <p className="text-red-600 font-bold">! {error}</p>}
+          </div>
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
@@ -112,7 +118,6 @@ const RegisterForm = ({ route }) => {
           </button>
         </form>
 
-        
         <p className="text-gray-600 mt-3 text-center">
           Already have an account?{" "}
           <Link to={"/login"} className="text-red-600">

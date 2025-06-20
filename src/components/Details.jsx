@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
   const product = useLoaderData();
-  const { image, name, price, descirption } = product;
+  const { image, name, price } = product;
   console.log(product);
   return (
     <div>
@@ -27,11 +27,11 @@ const Details = () => {
 
            {/* Product Info  */}
           <div class="w-full md:w-1/2 space-y-6">
-            <h1 class="text-4xl font-thin text-white w-[350px]">
+            <h1 class="text-4xl font-bold text-gray-700 w-[350px]">
               {name}
             </h1>
             <p class="text-2xl font-bold text-[#e26824]">${price}</p>
-            <p class="text-[#606466] leading-relaxed w-[450px] font-thin">
+            <p class="text-[#606466] leading-relaxed w-[450px] font-bold">
               Lorem ipsum dolor sit amet, in eum clita civibus erroribus. Ex
               purto probo vel. Cu mundi forensibus delicatissimi vel, wisi clita
               ullamcorper mel an.

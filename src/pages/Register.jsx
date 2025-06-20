@@ -3,7 +3,7 @@ import RegisterForm from '../components/RegisterForm';
 
 const Register = () => {
     return (
-        <RegisterForm route={'accounts/register/'}></RegisterForm>
+        <RegisterForm route={'https://sporting-server-phi.vercel.app/accounts/register/'}></RegisterForm>
     );
 };
 

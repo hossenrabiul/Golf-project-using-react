@@ -7,7 +7,7 @@ const ShopNow = () => {
   const [category, setCategory] = useState([])
   const [product, setProduct] = useState([])
   useEffect(()=>{
-    fetch('http://127.0.0.1:8000/category/categoryView/')
+    fetch('https://sporting-server-phi.vercel.app/category/categoryView/')
     .then(res => res.json())
     .then(data => {
       setCategory(data.results)
@@ -17,7 +17,7 @@ const ShopNow = () => {
   }, [])
 
   useEffect(()=>{
-    fetch('http://127.0.0.1:8000/posts/postlist/')
+    fetch('https://sporting-server-phi.vercel.app/posts/postlist/')
     .then(res => res.json())
     .then(data => {
       setProduct(data)
