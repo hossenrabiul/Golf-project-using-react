@@ -30,7 +30,7 @@ const ShopNow = () => {
   }, []);
 
   useEffect(()=>{
-    fetch(`http://127.0.0.1:8000/posts/postlist/${selectedCategory}/`)
+    fetch(`https://sporting-server-phi.vercel.app/posts/postlist/${selectedCategory}/`)
     .then((res) => res.json())
     .then(data => setProduct(data))
     .catch((error) => console.log(error))
