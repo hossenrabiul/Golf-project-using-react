@@ -9,7 +9,7 @@ const ClubMembership = () => {
         Select the Best Plan
       </h6>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div class="flex flex-col items-center justify-center  sm:grid md:grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {/* <!-- Membership Card --> */}
         <div class="hover:shadow-lg transition min-h-[340px] max-w-[250px] bg-white rounded-xl shadow-md">
           <h6 class="bg-[#e26824] text-white text-lg font-semibold py-4 px-3 mb-4">

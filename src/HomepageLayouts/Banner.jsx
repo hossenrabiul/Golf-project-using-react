@@ -26,23 +26,23 @@ const Banner = () => {
       </div>
 
       <div class="bg-[#f7f5f1] p-10">
-        <div class="icon-img flex justify-around items-center text-center">
-          <div class="">
+        <div class="icon-img grid grid-cols-2 md:grid-cols-4">
+          <div class="flex flex-col justify-center items-center">
   
             <TbGolfFilled className="w-[80px] h-[80px] text-[#7e9d10]"></TbGolfFilled>
             <h4 class="text-[#152229] font-normal mt-2">Golf Pro Shop</h4>
           </div>
-          <div class="">
+          <div class="flex flex-col justify-center items-center">
             
             <CiTrophy className="w-[80px] h-[80px] text-[#7e9d10]"></CiTrophy>
             <h4 class="text-[#152229] font-normal mt-2">Tournament Course</h4>
           </div>
-          <div class="">
+          <div class="flex flex-col justify-center items-center">
           
             <GiShower className="w-[80px] h-[80px] text-[#7e9d10]"></GiShower>
             <h4 class="text-[#152229] font-normal mt-2">Shower And Room</h4>
           </div>
-          <div>
+          <div class="flex flex-col justify-center items-center">
          
             <CiWifiOn className="w-[80px] h-[80px] text-[#7e9d10]"></CiWifiOn>
             <h4 class="text-[#152229] font-normal mt-2">Free Wi-Fi</h4>

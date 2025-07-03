@@ -8,9 +8,9 @@ const Navbar = () => {
   const token = localStorage.getItem("access");
    const {products} = useContext(AuthContext)
   return (
-    <div>
+    <div className="">
       {token ? (
-        <div class="navbar bg-base-100 flex justify-between my-5 items-center">
+        <div className="navbar bg-base-100 flex justify-between my-5 items-center">
           <div class="flex items-center">
             <div class="navbar-start">
               <div class="dropdown">
@@ -137,7 +137,7 @@ const Navbar = () => {
           </Link>
         </div>
       ) : (
-        <div class="navbar bg-base-100 flex justify-between my-5 items-center">
+        <div className="navbar bg-base-100 flex justify-between py-8 items-center">
           <div class="flex items-center">
             <div class="navbar-start">
               <div class="dropdown">

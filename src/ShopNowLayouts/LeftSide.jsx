@@ -10,7 +10,7 @@ import {
 const LeftSide = ({ categories }) => {
   console.log(categories);
   return (
-    <div className="w-full lg:w-[330px] bg-[#f7f5f1]  pl-8 space-y-10 py-10">
+    <div className="md:w-full lg:w-[330px] bg-[#f7f5f1]  pl-8 space-y-10 py-10">
       {/* Categories  */}
       <div>
         <h5 class="text-xl font-semibold text-[#152229] mb-6">

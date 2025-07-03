@@ -7,7 +7,7 @@ import { FaX } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 px-20 py-25">
+      <div class="grid space-y-10 md:space-y-0 sm:grid-cols-2 md:grid-cols-3 gap-6 px-20 py-25">
         <div>
           <div class="mb-6">
             <img src={img} alt="" />

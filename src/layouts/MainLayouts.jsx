@@ -7,7 +7,7 @@ const MainLayouts = () => {
   return (
     <div className="max-w-[1200px] mx-auto">
       <header className="border-t">
-        <nav>
+        <nav >
           <Navbar></Navbar>
         </nav>
       </header>
