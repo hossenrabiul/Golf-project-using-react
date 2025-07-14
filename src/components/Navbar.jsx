@@ -48,14 +48,30 @@ const Navbar = () => {
             </div>
 
             {/* Right - Cart + Buttons */}
-            <div className="hidden md:flex items-center space-x-4">
-              <GiShoppingCart className="w-6 h-6 text-gray-700 hover:text-sky-600 cursor-pointer" />
+            <div className="hidden md:flex items-center space-x-4 relative">
+              <div className="relative">
+                <Link to={"/shoppingcart"}>
+                  <GiShoppingCart className="w-6 h-6 text-gray-700 hover:text-sky-600 cursor-pointer" />
 
-              <Link to={'/register'} className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full shadow-md hover:from-indigo-500 hover:to-sky-500 hover:scale-105 transition duration-300">
+                  {/* Badge */}
+                </Link>
+
+                <span className="absolute -top-2 -right-2 bg-gray-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                  {products.length}
+                </span>
+              </div>
+
+              <Link
+                to={"/register"}
+                className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full shadow-md hover:from-indigo-500 hover:to-sky-500 hover:scale-105 transition duration-300"
+              >
                 Register
               </Link>
 
-              <Link to={'/login'} className="px-5 py-2 text-sm font-semibold border-2 border-sky-500 text-sky-600 rounded-full shadow-md hover:bg-sky-500 hover:text-white hover:scale-105 transition duration-300">
+              <Link
+                to={"/login"}
+                className="px-5 py-2 text-sm font-semibold border-2 border-sky-500 text-sky-600 rounded-full shadow-md hover:bg-sky-500 hover:text-white hover:scale-105 transition duration-300"
+              >
                 Login
               </Link>
             </div>
@@ -96,13 +112,19 @@ const Navbar = () => {
                 className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
               >
                 Contact
-              </Link>-0
+              </Link>
 
               <div className="flex space-x-4 mt-2">
-                <Link to={'/register'} className="flex-1 px-4 py-1 border border-sky-600 text-sky-600 rounded-xl hover:bg-sky-600 hover:text-white transition duration-200">
+                <Link
+                  to={"/register"}
+                  className="flex-1 px-4 py-1 border border-sky-600 text-sky-600 rounded-xl hover:bg-sky-600 hover:text-white transition duration-200"
+                >
                   Register
                 </Link>
-                <Link to={'/register'} className="flex-1 px-4 py-1 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition duration-200">
+                <Link
+                  to={"/register"}
+                  className="flex-1 px-4 py-1 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition duration-200"
+                >
                   Login
                 </Link>
               </div>
