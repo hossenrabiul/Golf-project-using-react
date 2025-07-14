@@ -7,131 +7,338 @@ import { Menu, ShoppingCart } from "lucide-react";
 import { GiShoppingCart } from "react-icons/gi";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const token = localStorage.getItem("access");
   const { products } = useContext(AuthContext);
+  const username = "rabiuil";
   return (
     <>
-      <nav className="bg-white z-50">
-        <div className="px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex items-center justify-between h-16">
-            {/* Left - Logo/Image */}
-            <div className="flex-shrink-0">
-              <img className="h-14 w-auto rounded-full" src={logo} alt="Logo" />
-            </div>
+      <div>
+        {token ? (
+          <nav className="bg-white z-50">
+            <div className="px-4 sm:px-6 lg:px-8 py-5">
+              <div className="flex items-center justify-between h-16">
+                {/* Left - Logo/Image */}
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-14 w-auto rounded-full"
+                    src={logo}
+                    alt="Logo"
+                  />
+                </div>
 
-            {/* Middle - Nav Links */}
-            <div className="hidden md:flex space-x-4 ml-auto mr-10">
-              <Link
-                to={"/"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Home
-              </Link>
-              <Link
-                to={"/shopnow"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Shop now
-              </Link>
-              <Link
-                to={"/about"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                About
-              </Link>
-              <Link
-                to={"/contactus"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Contact
-              </Link>
-            </div>
+                {/* Middle - Nav Links */}
+                <div className="hidden md:flex space-x-4 ml-auto mr-10">
+                  <Link
+                    to={"/"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to={"/shopnow"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Shop now
+                  </Link>
+                  <Link
+                    to={"/about"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to={"/contactus"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Contact
+                  </Link>
+                </div>
 
-            {/* Right - Cart + Buttons */}
-            <div className="hidden md:flex items-center space-x-4 relative">
-              <div className="relative">
-                <Link to={"/shoppingcart"}>
-                  <GiShoppingCart className="w-6 h-6 text-gray-700 hover:text-sky-600 cursor-pointer" />
+                {/* Right - Cart + Buttons */}
+                <div className="hidden md:flex items-center space-x-4 relative">
+                  <div className="relative me-8">
+                    <Link to={"/shoppingcart"}>
+                      <GiShoppingCart className="w-6 h-6 text-gray-700 hover:text-sky-600 cursor-pointer" />
 
-                  {/* Badge */}
-                </Link>
+                      {/* Badge */}
+                    </Link>
 
-                <span className="absolute -top-2 -right-2 bg-gray-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                  {products.length}
-                </span>
-              </div>
+                    <span className="absolute -top-2 -right-2 bg-gray-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                      {products.length}
+                    </span>
+                  </div>
 
-              <Link
-                to={"/register"}
-                className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full shadow-md hover:from-indigo-500 hover:to-sky-500 hover:scale-105 transition duration-300"
-              >
-                Register
-              </Link>
+                  <div className="relative">
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className="px-5 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-md hover:bg-sky-700 transition duration-300"
+                    >
+                      {username}
+                    </button>
 
-              <Link
-                to={"/login"}
-                className="px-5 py-2 text-sm font-semibold border-2 border-sky-500 text-sky-600 rounded-full shadow-md hover:bg-sky-500 hover:text-white hover:scale-105 transition duration-300"
-              >
-                Login
-              </Link>
-            </div>
+                    {dropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
+                        <Link
+                          to="/profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Profile
+                        </Link>
+                        <Link
+                          to="/settings"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Settings
+                        </Link>
+                        <button
+                          onClick={() => {
+                            // Add logout logic here
+                            console.log("Logout");
+                          }}
+                          className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
 
-            {/* Mobile - Hamburger Menu */}
-            <div className="md:hidden flex items-center">
-              <button onClick={() => setMenuOpen(!menuOpen)}>
-                <Menu className="h-6 w-6 text-gray-700" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown */}
-        {menuOpen && (
-          <div className="md:hidden bg-white px-4 pb-4 shadow-md">
-            <div className="flex flex-col space-y-3 mt-2">
-              <Link
-                to={"/"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Home
-              </Link>
-              <Link
-                to={"/shopnow"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Shop now
-              </Link>
-              <Link
-                to={"/about"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                About
-              </Link>
-              <Link
-                to={"/contactus"}
-                className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
-              >
-                Contact
-              </Link>
-
-              <div className="flex space-x-4 mt-2">
-                <Link
-                  to={"/register"}
-                  className="flex-1 px-4 py-1 border border-sky-600 text-sky-600 rounded-xl hover:bg-sky-600 hover:text-white transition duration-200"
-                >
-                  Register
-                </Link>
-                <Link
-                  to={"/register"}
-                  className="flex-1 px-4 py-1 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition duration-200"
-                >
-                  Login
-                </Link>
+                {/* Mobile - Hamburger Menu */}
+                <div className="md:hidden flex items-center">
+                  <button onClick={() => setMenuOpen(!menuOpen)}>
+                    <Menu className="h-6 w-6 text-gray-700" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+
+            {/* Mobile Dropdown */}
+            {menuOpen && (
+              <div className="md:hidden bg-white px-4 pb-4 shadow-md">
+                <div className="flex flex-col space-y-3 mt-2">
+                  <Link
+                    to={"/"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to={"/shopnow"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Shop now
+                  </Link>
+                  <Link
+                    to={"/about"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to={"/contactus"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Contact
+                  </Link>
+
+                  <div className="flex space-x-4 mt-2">
+                    <div className="relative">
+                      <button
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className="px-5 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-md hover:bg-sky-700 transition duration-300"
+                      >
+                        {username}
+                      </button>
+
+                      {dropdownOpen && (
+                        <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
+                          <Link
+                            to="/profile"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Profile
+                          </Link>
+                          <Link
+                            to="/settings"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Settings
+                          </Link>
+                          <Link to={'/logout'}
+                         
+                            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                          >
+                            Logout
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </nav>
+        ) : (
+          <nav className="bg-white z-50">
+            <div className="px-4 sm:px-6 lg:px-8 py-5">
+              <div className="flex items-center justify-between h-16">
+                {/* Left - Logo/Image */}
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-14 w-auto rounded-full"
+                    src={logo}
+                    alt="Logo"
+                  />
+                </div>
+
+                {/* Middle - Nav Links */}
+                <div className="hidden md:flex space-x-4 ml-auto mr-10">
+                  <Link
+                    to={"/"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to={"/shopnow"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Shop now
+                  </Link>
+                  <Link
+                    to={"/about"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to={"/contactus"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Contact
+                  </Link>
+                </div>
+
+                {/* Right - Cart + Buttons */}
+                <div className="hidden md:flex items-center space-x-4 relative">
+                  <div className="relative me-8">
+                    <Link to={"/shoppingcart"}>
+                      <GiShoppingCart className="w-6 h-6 text-gray-700 hover:text-sky-600 cursor-pointer" />
+
+                      {/* Badge */}
+                    </Link>
+
+                    <span className="absolute -top-2 -right-2 bg-gray-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                      {products.length}
+                    </span>
+                  </div>
+                    <div className="relative">
+                      <button
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className="px-5 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-md hover:bg-sky-700 transition duration-300"
+                      >
+                        profile
+                        {/* {username} */}
+                      </button>
+
+                      {dropdownOpen && (
+                        <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
+                          <Link
+                            to="/profile"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Profile
+                          </Link>
+                          <Link
+                            to="/settings"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Settings
+                          </Link>
+                          <Link to={'/logout'}
+                         
+                            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                          >
+                            Logout
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  {/* <Link
+                    to={"/register"}
+                    className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full shadow-md hover:from-indigo-500 hover:to-sky-500 hover:scale-105 transition duration-300"
+                  >
+                    Register
+                  </Link> */}
+
+                  {/* <Link
+                    to={"/login"}
+                    className="px-5 py-2 text-sm font-semibold border-2 border-sky-500 text-sky-600 rounded-full shadow-md hover:bg-sky-500 hover:text-white hover:scale-105 transition duration-300"
+                  >
+                    Login
+                  </Link> */}
+                </div>
+
+                {/* Mobile - Hamburger Menu */}
+                <div className="md:hidden flex items-center">
+                  <button onClick={() => setMenuOpen(!menuOpen)}>
+                    <Menu className="h-6 w-6 text-gray-700" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Dropdown */}
+            {menuOpen && (
+              <div className="md:hidden bg-white px-4 pb-4 shadow-md">
+                <div className="flex flex-col space-y-3 mt-2">
+                  <Link
+                    to={"/"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to={"/shopnow"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Shop now
+                  </Link>
+                  <Link
+                    to={"/about"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to={"/contactus"}
+                    className="px-3 py-1 text-gray-700 font-medium tracking-wide rounded-md transition duration-300 hover:shadow-[0_2px_8px_rgba(56,189,248,0.3)] hover:text-sky-600"
+                  >
+                    Contact
+                  </Link>
+
+                  <div className="flex space-x-4 mt-2">
+                    <Link
+                      to={"/register"}
+                      className="flex-1 px-4 py-1 border border-sky-600 text-sky-600 rounded-xl hover:bg-sky-600 hover:text-white transition duration-200"
+                    >
+                      Register
+                    </Link>
+                    <Link
+                      to={"/register"}
+                      className="flex-1 px-4 py-1 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition duration-200"
+                    >
+                      Login
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+          </nav>
         )}
-      </nav>
+      </div>
     </>
     // <div className="">
     //   {token ? (
