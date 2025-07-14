@@ -234,51 +234,20 @@ const Navbar = () => {
                       {products.length}
                     </span>
                   </div>
-                    <div className="relative">
-                      <button
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className="px-5 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-md hover:bg-sky-700 transition duration-300"
-                      >
-                        profile
-                        {/* {username} */}
-                      </button>
-
-                      {dropdownOpen && (
-                        <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
-                          <Link
-                            to="/profile"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Profile
-                          </Link>
-                          <Link
-                            to="/settings"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Settings
-                          </Link>
-                          <Link to={'/logout'}
-                         
-                            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                          >
-                            Logout
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  {/* <Link
+                   
+                  <Link
                     to={"/register"}
                     className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full shadow-md hover:from-indigo-500 hover:to-sky-500 hover:scale-105 transition duration-300"
                   >
                     Register
-                  </Link> */}
+                  </Link>
 
-                  {/* <Link
+                  <Link
                     to={"/login"}
                     className="px-5 py-2 text-sm font-semibold border-2 border-sky-500 text-sky-600 rounded-full shadow-md hover:bg-sky-500 hover:text-white hover:scale-105 transition duration-300"
                   >
                     Login
-                  </Link> */}
+                  </Link>
                 </div>
 
                 {/* Mobile - Hamburger Menu */}
