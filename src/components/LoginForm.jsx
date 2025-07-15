@@ -6,11 +6,12 @@ const LoginForm = ({ route}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     const handlesubmit = async (e)=>{
         e.preventDefault()
-
+        setLoading(true)
         try{
             const res = await api.post(route, {username, password})
             console.log(res)
@@ -22,6 +23,8 @@ const LoginForm = ({ route}) => {
         }catch(error){
            setError(error.response.data.detail)
            console.log(error)
+        }finally{
+          setLoading(false)
         }
 
     }
@@ -57,6 +60,9 @@ const LoginForm = ({ route}) => {
               error && <p className="text-red-600 font-bold">! Please provite your creadentials currectly</p>
             }
           </div>
+          {
+            loading && <div className="flex justify-center"><span className="loading loading-spinner loading-lg"></span></div>
+          }
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"

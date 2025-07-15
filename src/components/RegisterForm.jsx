@@ -11,10 +11,11 @@ const RegisterForm = ({ route }) => {
   const [confirm_password, setComfirm_password] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState("");
+   const [loading, setLoading] = useState(false)
   // console.log(username, " ", first_name, " ", last_name, " ", email, " ", password, " ", comfirm_password)
   const handlesubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
     try {
       const res = await api.post(route, {
         username,
@@ -36,6 +37,8 @@ const RegisterForm = ({ route }) => {
       }
       
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   };
   return (
@@ -115,6 +118,9 @@ const RegisterForm = ({ route }) => {
           <div>
             {error && <p className="text-red-600 font-bold">! {error}</p>}
           </div>
+          {
+            loading && <div className="flex justify-center"><span className="loading loading-spinner loading-lg"></span></div>
+          }
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"

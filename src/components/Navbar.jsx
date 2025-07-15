@@ -10,7 +10,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const token = localStorage.getItem("access");
   const { products } = useContext(AuthContext);
-  const username = "rabiuil";
+  const username = "Rabiul";
   return (
     <>
       <div>
@@ -91,15 +91,12 @@ const Navbar = () => {
                         >
                           Settings
                         </Link>
-                        <button
-                          onClick={() => {
-                            // Add logout logic here
-                            console.log("Logout");
-                          }}
-                          className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                        <Link
+                          to={'/logout'}
+                          className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                         >
                           Logout
-                        </button>
+                        </Link>
                       </div>
                     )}
                   </div>
